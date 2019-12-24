@@ -4,15 +4,6 @@ import logging
 
 '''
 ORM: Object Relational Mapping, 把关系数据库的表结构映射到对象上
-from orm import Model, StringField, IntegerField
-
-#定义一个user对象，把数据库表users和它关联起来
-class User(Model):
-    #类的属性，不是实例的属性，实例属性必须通过__init__
-    __table__ = 'users'
-
-    id = IntegerField(primary_key = True)
-    name = StringField()
 '''
 
 
@@ -123,7 +114,7 @@ class TextField(Field):
 
 
 class ModelMetaclass(type):
-    
+    #__new__() 方法是在类准备将自身实例化(启动__init__()之前)时调用。
     def __new__(cls, name, bases, attrs):
         #排除Model类本身
         if name == 'Model':
